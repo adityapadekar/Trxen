@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Transactions.sol": {
+      "content": "// SPDX-License-Identifier:MIT\r\npragma solidity ^0.8.8;\r\n\r\ncontract Transactions {\r\n    uint256 private s_transactionCount;\r\n\r\n    event Transfer(\r\n        address indexed from,\r\n        address indexed receiver,\r\n        uint256 amount,\r\n        string message,\r\n        uint256 timestamp\r\n    );\r\n\r\n    struct TransferStruct {\r\n        address sender;\r\n        address receiver;\r\n        uint256 amount;\r\n        string message;\r\n        uint256 timestamp;\r\n    }\r\n\r\n    TransferStruct[] private s_transactions;\r\n\r\n    function addToBlockchain(\r\n        address payable receiver,\r\n        uint256 amount,\r\n        string memory message\r\n    ) public {\r\n        s_transactionCount++;\r\n        s_transactions.push(\r\n            TransferStruct(\r\n                msg.sender,\r\n                receiver,\r\n                amount,\r\n                message,\r\n                block.timestamp\r\n            )\r\n        );\r\n\r\n        emit Transfer(msg.sender, receiver, amount, message, block.timestamp);\r\n    }\r\n\r\n    function getAllTransactions()\r\n        public\r\n        view\r\n        returns (TransferStruct[] memory)\r\n    {\r\n        return s_transactions;\r\n    }\r\n\r\n    function getTransactionCount() public view returns (uint256) {\r\n        return s_transactionCount;\r\n    }\r\n}\r\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
