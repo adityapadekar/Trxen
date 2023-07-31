@@ -44,7 +44,6 @@ const TransactionsCard = ({
                     <p className="text-white text-base">Amount: {amount}</p>
                     {message && (
                         <>
-                            <br />
                             <p className="text-white text-base">
                                 message : {message}
                             </p>
@@ -55,7 +54,7 @@ const TransactionsCard = ({
                             <img
                                 src={img}
                                 alt="nature"
-                                className="object-contain rounded-md shadow-lg object-cover"
+                                className="object-contain rounded-md shadow-lg"
                             />
                         </div>
                     </div>
@@ -84,7 +83,7 @@ const Transactions = () => {
                         </h3>
                     )}
                     <div className="flex flex-wrap justify-center items-center mt-10">
-                        {transactions.reverse().map((transaction, i) => (
+                        {transactions.map((transaction, i) => (
                             <TransactionsCard key={i} {...transaction} />
                         ))}
                     </div>
