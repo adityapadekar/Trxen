@@ -46,12 +46,9 @@ const Welcome = () => {
             const accounts = await window.ethereum.request({
                 method: "eth_accounts",
             });
-            if (accounts.length) {
-                setCurrentAccount(accounts[0]);
-            } else {
+            if (accounts.length === 0) {
                 return alert("No Accounts Found");
             }
-            console.log(accounts);
         } catch (err) {
             console.log(err);
             throw new Error("No Ethereum Object");
