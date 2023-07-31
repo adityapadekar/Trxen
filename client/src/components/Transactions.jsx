@@ -43,11 +43,9 @@ const TransactionsCard = ({
                     </a>
                     <p className="text-white text-base">Amount: {amount}</p>
                     {message && (
-                        <>
-                            <p className="text-white text-base">
-                                message : {message}
-                            </p>
-                        </>
+                        <p className="text-white text-base">
+                            message : {message}
+                        </p>
                     )}
                     <div className="flex flex-col justify-center items-center w-full">
                         <div className="flex flex-col justify-center items-center w-1/2 h-40 2xl:h-48">
